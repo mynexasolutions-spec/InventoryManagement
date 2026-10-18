@@ -225,7 +225,7 @@ export default function CameraScanner({
             >
               {result && !result.ok ? <AlertCircle size={15} className="mt-px shrink-0" /> : <Check size={15} className="mt-px shrink-0" />}
               <div className="min-w-0 flex-1">
-                <div className="font-bold">{result?.text || "Scanned"}</div>
+                <div className="text-sm font-extrabold leading-snug">{result?.text || "Scanned"}</div>
                 {last && <div className="mt-0.5 break-all font-mono text-[11px] opacity-80">{last}</div>}
               </div>
             </motion.div>

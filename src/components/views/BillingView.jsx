@@ -71,6 +71,7 @@ export default function BillingView() {
       return;
     }
     beep(true, `Added: ${p.name}`);
+    fire("Added to bill", `${p.name} · ${formatINR(p.price)}`);
     setCart((c) => (c.some((l) => l.productId === p.id) ? c.map((l) => (l.productId === p.id ? { ...l, qty: l.qty + 1 } : l)) : [...c, { productId: p.id, qty: 1, discountPct: 0 }]));
     setFlashId(p.id);
     setTimeout(() => setFlashId((f) => (f === p.id ? null : f)), 700);
