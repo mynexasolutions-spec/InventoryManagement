@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============ design tokens: "Zari & Silk" — Luxury Emerald & Gold Textile ERP ============ */
+:root {
+  --c-bg: #f8fafc;
+  --c-surface: #ffffff;
+  --c-surface-2: #f1f5f9;
+  --c-ink: #0f172a;
+  --c-ink-soft: #475569;
+  --c-ink-faint: #94a3b8;
+  --c-line: #e2e8f0;
+  --c-accent: #0d9488;
+  --c-accent-solid: #0f766e;
+  --c-accent-light: #f0fdfa;
+  --c-accent-dark: #115e59;
+  --c-amber: #d97706;
+  --c-amber-light: #fef3c7;
+  --c-good: #10b981;
+  --c-good-light: #ecfdf5;
+  --c-bad: #ef4444;
+  --c-bad-light: #fef2f2;
+  --c-info: #3b82f6;
+  --c-info-light: #eff6ff;
+  --shadow-c: rgba(15, 23, 42, 0.08);
+  --shadow-p: rgba(15, 23, 42, 0.18);
+  --mesh-1: rgba(13, 148, 136, 0.08);
+  --mesh-2: rgba(217, 119, 6, 0.07);
+  --hero-from: #042521;
+  --hero-to: #0c3e37;
+  --dot: rgba(15, 23, 42, 0.035);
+}
+
+.dark {
+  --c-bg: #070d0c;
+  --c-surface: #0f1816;
+  --c-surface-2: #15221f;
+  --c-ink: #f8fafc;
+  --c-ink-soft: #94a3b8;
+  --c-ink-faint: #64748b;
+  --c-line: #1c2b27;
+  --c-accent: #2dd4bf;
+  --c-accent-solid: #0d9488;
+  --c-accent-light: #092621;
+  --c-accent-dark: #5eead4;
+  --c-amber: #f59e0b;
+  --c-amber-light: #2b1f09;
+  --c-good: #34d399;
+  --c-good-light: #09261a;
+  --c-bad: #f87171;
+  --c-bad-light: #2c1212;
+  --c-info: #60a5fa;
+  --c-info-light: #0d1e38;
+  --shadow-c: rgba(0, 0, 0, 0.5);
+  --shadow-p: rgba(0, 0, 0, 0.75);
+  --mesh-1: rgba(45, 212, 191, 0.08);
+  --mesh-2: rgba(245, 158, 11, 0.06);
+  --hero-from: #031a15;
+  --hero-to: #083029;
+  --dot: rgba(255, 255, 255, 0.035);
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-ink: var(--c-ink);
+  --color-ink-soft: var(--c-ink-soft);
+  --color-ink-faint: var(--c-ink-faint);
+  --color-line: var(--c-line);
+  --color-accent: var(--c-accent);
+  --color-accent-solid: var(--c-accent-solid);
+  --color-accent-light: var(--c-accent-light);
+  --color-accent-dark: var(--c-accent-dark);
+  --color-amber: var(--c-amber);
+  --color-amber-light: var(--c-amber-light);
+  --color-good: var(--c-good);
+  --color-good-light: var(--c-good-light);
+  --color-bad: var(--c-bad);
+  --color-bad-light: var(--c-bad-light);
+  --color-info: var(--c-info);
+  --color-info-light: var(--c-info-light);
+
+  --font-display: var(--font-jakarta);
+  --font-mono: var(--font-geist-mono);
+
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  --shadow-pop: 0 20px 40px -15px var(--shadow-p);
+}
+
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: 0;
+}
+
+::selection {
+  background: var(--color-accent-solid);
+  color: white;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 99px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ============ surfaces & modern depth ============ */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1.125rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-lift {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-line));
+  box-shadow: 0 14px 30px -10px var(--shadow-c), 0 4px 10px -4px rgba(0, 0, 0, 0.03);
+}
+
+.glass {
+  background: var(--color-surface);
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #0b3a34 0%, #0f5448 100%);
+  box-shadow: 0 18px 40px -22px rgba(5, 42, 35, 0.55);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 2px 5px rgba(15, 118, 110, 0.3), 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.18s ease;
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.scan-input::placeholder {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+}
+
+.zoom-fit {
+  zoom: 0.47;
+}
+@media (min-width: 400px) and (max-width: 639px) {
+  .zoom-fit {
+    zoom: 0.53;
+  }
+}
+@media (min-width: 640px) {
+  .zoom-fit {
+    zoom: 1;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-surface-2);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  transition: all 0.15s ease;
+}
+.input::placeholder {
+  color: var(--color-ink-faint);
+}
+.input:focus {
+  outline: none;
+  background: var(--color-surface);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b968f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.2rem;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 50%, transparent); }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ============ printing (invoice, challan, barcode labels) ============ */
+#print-portal {
+  display: none;
+}
+@media print {
+  body > *:not(#print-portal) {
+    display: none !important;
+  }
+  #print-portal {
+    display: block !important;
+  }
+  html,
+  body {
+    background: #fff !important;
+    height: auto !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  @page {
+    margin: 10mm;
+  }
+  .print-break {
+    break-after: page;
+  }
+  .print-avoid {
+    break-inside: avoid;
+  }
+}
+
+/* no ellipsis on phones: long names wrap instead of being cut with "..." */
+@media (max-width: 767px) {
+  .truncate {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: break-word;
+    word-break: normal;
+    min-width: 6rem;
+  }
+}
+
+.scroll-thin table td,
+.scroll-thin table th {
+  white-space: nowrap;
+}
+
+/* number fields: no tiny native up/down arrows, use the - and + buttons */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* scanner laser: plain CSS so it keeps moving on phones (no JS animation needed) */
+@keyframes scan-line {
+  0%, 100% { top: 10%; opacity: 0.55; }
+  50% { top: 90%; opacity: 1; }
+}
+.scan-line {
+  top: 10%;
+  animation: scan-line 2.3s ease-in-out infinite;
+}
+
+/* ===== text scale: everything reads one step larger ===== */
+@theme {
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.2rem;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.4rem;
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.6rem;
+  --text-lg: 1.1875rem;
+  --text-lg--line-height: 1.7rem;
+  --text-xl: 1.3125rem;
+  --text-xl--line-height: 1.8rem;
+}
+
+/* tiny hard-coded pixel sizes are raised too; printed documents keep their own sizes */
+[class*="text-[9px]"]:not(.print-doc *) { font-size: 11px; }
+[class*="text-[10px]"]:not(.print-doc *) { font-size: 12px; }
+[class*="text-[11px]"]:not(.print-doc *) { font-size: 12.5px; }
+[class*="text-[12px]"]:not(.print-doc *) { font-size: 13.5px; }
+[class*="text-[13px]"]:not(.print-doc *) { font-size: 14.5px; }
+[class*="text-[14px]"]:not(.print-doc *) { font-size: 15.5px; }
+
+.print-doc {
+  font-size: 12px;
+}
+
+/* ===== themed scrollbars (page + every scrolling panel) ===== */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-accent-solid) 45%, var(--color-line));
+  border-radius: 999px;
+  border: 3px solid var(--color-bg);
+  background-clip: padding-box;
+  min-height: 48px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-solid);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-accent-dark);
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  border-color: var(--color-surface);
+}
+/* modern browsers (Chrome 121+, Edge, Firefox, Safari): standard properties, themed teal thumb on a clear track */
+html,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-accent-solid) 70%, #ffffff) transparent;
+}
+
+
+/* no arrow buttons at the ends of scrollbars; the page keeps a stable gutter so nothing jumps */
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+html {
+  scrollbar-gutter: stable;
+}
